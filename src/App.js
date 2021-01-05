@@ -1,20 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Button from "@material-ui/core/Button";
 import { FormControl, InputLabel, Input } from "@material-ui/core";
 import Todo from "./Todo";
+import db from "./firebase";
+import firebase from "./firebase";
 
 function App() {
-  const [todos, setTodos] = useState([
-    "Take trash out",
-    "buy groceries",
-    "get sun on my face",
-  ]);
+  //when the app loads we will listen to the database and fetch new todos as they get added/removed
+
+  useEffect(() => {
+    //this will load when when App.js loads
+    //snapshot when it changes its like a camera that snaps it and it bring back to us
+    db.collection("todos").onSnapshot((snapshot) => {
+      //the docs is what gets added to the database. gets orgganized in collection and documents
+      //so it allows us to read our database
+      setTodos(snapshot.docs.map((doc) => doc.data().text)); // text is the name given in the database field
+    });
+  }, []);
+
+  const [todos, setTodos] = useState([]);
   //created the hook in the input in order to conect the input to the piece of state
   const [input, setInput] = useState("");
   //to push it when we click the button
   const addTodo = (event) => {
     event.preventDefault();
+
+    //now this will add to the db > fires snapshot >updates our todos
+    db.collection("todos").add({
+      todo: input,
+      timestamp:
+    });
     //...todos spreads the info given and push it from the input
     setTodos([...todos, input]);
     setInput(""); //clears the input after we enter
