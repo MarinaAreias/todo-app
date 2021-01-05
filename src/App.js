@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Button from "@material-ui/core/Button";
 import { FormControl, InputLabel, Input } from "@material-ui/core";
+import Todo from "./Todo";
 
 function App() {
   const [todos, setTodos] = useState([
@@ -20,12 +21,11 @@ function App() {
   };
   return (
     <div className="app">
-      <h1>hello</h1>
       {/* we need to add onChange or it does not type */}
       {/* the <form> tag allows for accessibility */}
       <form>
         <FormControl>
-          <InputLabel>Write your to-do list</InputLabel>
+          <InputLabel>✔ Write your to-do list</InputLabel>
           <Input
             value={input}
             onChange={(event) => setInput(event.target.value)}
@@ -45,7 +45,7 @@ function App() {
       </form>
       <ul>
         {todos.map((todo) => (
-          <li>{todo}</li>
+          <Todo text={todo} />
         ))}
       </ul>
     </div>
