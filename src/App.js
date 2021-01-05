@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
+import Button from "@material-ui/core/Button";
+import { FormControl, InputLabel, Input } from "@material-ui/core";
 
 function App() {
   const [todos, setTodos] = useState([
@@ -14,7 +16,7 @@ function App() {
     event.preventDefault();
     //...todos spreads the info given and push it from the input
     setTodos([...todos, input]);
-    setInput("");
+    setInput(""); //clears the input after we enter
   };
   return (
     <div className="app">
@@ -22,13 +24,24 @@ function App() {
       {/* we need to add onChange or it does not type */}
       {/* the <form> tag allows for accessibility */}
       <form>
-        <input
-          value={input}
-          onChange={(event) => setInput(event.target.value)}
-        />
-        <button type="submit" onClick={addTodo}>
-          Add to-do
-        </button>
+        <FormControl>
+          <InputLabel>Write your to-do list</InputLabel>
+          <Input
+            value={input}
+            onChange={(event) => setInput(event.target.value)}
+          />
+        </FormControl>
+
+        <Button
+          type="submit"
+          onClick={addTodo}
+          variant="contained"
+          color="primary"
+          //so it does not add if input is empty
+          disabled={!input}
+        >
+          Primary
+        </Button>
       </form>
       <ul>
         {todos.map((todo) => (
