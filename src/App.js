@@ -21,7 +21,11 @@ function App() {
       .onSnapshot((snapshot) => {
         //the docs is what gets added to the database. gets orgganized in collection and documents
         //so it allows us to read our database
-        setTodos(snapshot.docs.map((doc) => doc.data().todo)); // text is the name given in the database field
+        //also going to add id to this object, so we can select each one
+        setTodos(
+          snapshot.docs.map((doc) => ({ id: doc.id, todo: doc.data().todo }))
+        );
+        // text is the name given in the database field
       });
   }, []);
 
@@ -65,7 +69,7 @@ function App() {
       </form>
       <ul>
         {todos.map((todo) => (
-          <Todo text={todo} />
+          <Todo todo={todo} />
         ))}
       </ul>
     </div>
