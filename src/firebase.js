@@ -1,4 +1,4 @@
-import firebase from "./firebase";
+import firebase from "firebase";
 
 //comand given by firebase. so we copy the conffig we get from website and past it here
 //is the key to our backend
