@@ -28,9 +28,24 @@ const useStyles = makeStyles((theme) => ({
 export default function Todo(props) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+  const [input, setInput] = useState("");
 
   const handleOpen = () => {
     setOpen(true);
+  };
+
+  const updateTodo = () => {
+    //update the todo with new input text
+
+    db.collection("todos").doc(props.todo.id).set(
+      {
+        todo: input,
+        //this prevents us from overwriting what was already in there
+      },
+      { merge: true }
+    );
+
+    setOpen(false);
   };
 
   return (
@@ -39,7 +54,12 @@ export default function Todo(props) {
     <>
       <Modal open={open} onClose={(e) => setOpen(false)}>
         <div className={classes.paper}>
-          <Button onClick={(event) => setOpen(false)}></Button>
+          <input
+            placeholder={props.todo.todo}
+            value={input}
+            onChange={(event) => setInput(event.target.value)}
+          />
+          <Button onClick={updateTodo}>Update</Button>
         </div>
       </Modal>
 
