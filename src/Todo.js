@@ -71,8 +71,12 @@ export default function Todo(props) {
           {/* bellow we have the todo object, passed on App.js and the todo text */}
           <ListItemText primary={props.todo.todo} secondary="to-do" />
         </ListItem>
-        <button onClick={(e) => setOpen(true)}> Edit </button>
+        <button className="todo__edit-button" onClick={(e) => setOpen(true)}>
+          {" "}
+          Edit{" "}
+        </button>
         <DeleteIcon
+          className="todo__icon"
           onClick={(event) =>
             db.collection("todos").doc(props.todo.id).delete()
           }

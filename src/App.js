@@ -44,34 +44,38 @@ function App() {
     setInput(""); //clears the input after we enter
   };
   return (
-    <div className="app">
-      {/* we need to add onChange or it does not type */}
-      {/* the <form> tag allows for accessibility */}
-      <form>
-        <FormControl>
-          <InputLabel>✔ Write your to-do list</InputLabel>
-          <Input
-            value={input}
-            onChange={(event) => setInput(event.target.value)}
-          />
-        </FormControl>
+    <div className="app__header">
+      <h1>Your to-do list</h1>
+      <div className="app">
+        {/* we need to add onChange or it does not type */}
+        {/* the <form> tag allows for accessibility */}
+        <form className="app__form">
+          <FormControl>
+            <InputLabel>✔ Write your to-do list</InputLabel>
+            <Input
+              value={input}
+              onChange={(event) => setInput(event.target.value)}
+            />
+          </FormControl>
 
-        <Button
-          type="submit"
-          onClick={addTodo}
-          variant="contained"
-          color="primary"
-          //so it does not add if input is empty
-          disabled={!input}
-        >
-          Primary
-        </Button>
-      </form>
-      <ul>
-        {todos.map((todo) => (
-          <Todo todo={todo} />
-        ))}
-      </ul>
+          <Button
+            className="app__button"
+            type="submit"
+            onClick={addTodo}
+            variant="contained"
+            color="primary"
+            //so it does not add if input is empty
+            disabled={!input}
+          >
+            Add to-do
+          </Button>
+        </form>
+        <ul>
+          {todos.map((todo) => (
+            <Todo todo={todo} />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,16 @@
 .todo__list {
   text-align: center;
-  color: red;
+  color: black;
+}
+
+.todo__icon {
+  color: darksalmon;
+}
+
+.todo__edit-button {
+  border-radius: 3px;
+  border: none;
+}
+
+.todo__text {
 }
