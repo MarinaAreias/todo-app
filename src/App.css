@@ -3,16 +3,29 @@
 }
 
 .app__header {
+  font-family: "Xanh Mono", monospace;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 0px;
+  width: 100%;
+  background-image: url(./background2.png);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #464646;
+}
+
+.title {
+  margin-top: 90px;
 }
 
 .app {
+  font-family: "Xanh Mono", monospace;
   display: flex;
   flex-direction: column;
-  background-color: lightgray;
+  background-color: darkgray;
   margin-top: 40px;
   margin-bottom: 40px;
   margin-left: 20px;
@@ -22,6 +35,9 @@
   object-fit: contain;
   justify-content: space-evenly;
   padding: 50px;
+  padding-bottom: 20rem;
+  box-shadow: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.25),
+    0.125em 0.125em 025em rgba(0, 0, 0, 0.15);
 }
 
 .app ul {

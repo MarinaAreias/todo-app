@@ -66,7 +66,7 @@ export default function Todo(props) {
       <List className="todo__list">
         <ListItem>
           <ListItemIcon>
-            <Checkbox />
+            <Checkbox color="primary" />
           </ListItemIcon>
           {/* bellow we have the todo object, passed on App.js and the todo text */}
           <ListItemText primary={props.todo.todo} secondary="to-do" />
@@ -76,6 +76,7 @@ export default function Todo(props) {
           Edit{" "}
         </button>
         <DeleteIcon
+          color="primary"
           className="todo__icon"
           onClick={(event) =>
             db.collection("todos").doc(props.todo.id).delete()

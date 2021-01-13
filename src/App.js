@@ -5,7 +5,10 @@ import { FormControl, InputLabel, Input } from "@material-ui/core";
 import Todo from "./Todo";
 import db from "./firebase";
 import firebase from "firebase";
-
+<link
+  href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap"
+  rel="stylesheet"
+></link>;
 function App() {
   const [todos, setTodos] = useState([]);
   //created the hook in the input in order to conect the input to the piece of state
@@ -45,7 +48,9 @@ function App() {
   };
   return (
     <div className="app__header">
-      <h1>Your to-do list</h1>
+      <div className="title">
+        <h1>Your to-do list</h1>
+      </div>
       <div className="app">
         {/* we need to add onChange or it does not type */}
         {/* the <form> tag allows for accessibility */}
@@ -59,6 +64,7 @@ function App() {
           </FormControl>
 
           <Button
+            c
             className="app__button"
             type="submit"
             onClick={addTodo}
